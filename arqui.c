@@ -11,12 +11,55 @@
 #include <string.h>
 
 void menu();
+void dec2bin();
+void dec2oct();
+void dec2hex();
+void dec2b6();
+void ingresadec();
+
+//funcion para ingresar un numero decimal
+void ingresadec(){
+	int dec;
+	scanf("%d",&dec);
+	char *num;
+	sprintf(num,"%d",dec);
+	printf("El largo del numero %s es %lu\n", num, strlen(num));
+	//return(dec);
+
+}
+
+
+//función decimal a binario
+void dec2bin(){
+	//printf("decimal_a_binario\n");
+
+}
+
+//función decimal a octal
+void dec2oct(){
+	printf("decimal_a_octal\n");	
+}
+
+//función decimal a hexadecimal
+void dec2hex(){
+	printf("decimal_a_hexadecimal\n");
+
+}
+
+//función decimal a base 6
+void dec2b6(){
+	printf("decimal_a_base6\n");
+
+}
+
+
+
 
 //función menú
-
 void menu(){
 	int cmd;
-	
+	//int entrada;
+
 	do {
 
 		printf("+-----------------------------------------------+\n");
@@ -39,19 +82,33 @@ void menu(){
                 break;
             
             case 1:
-            	printf("Estás en la opción 1\n");
+            	printf("Ingresa el nº decimal que deseas convertir a binario\n");
+            	printf("> ");
+            	ingresadec();
+            	
+            	//printf("el valor de num es %d\n",num);
+            	//dec2bin();
             	break;
             
             case 2:
-            	printf("Estás en la opción 2\n");
+            	printf("Ingresa el nº decimal que deseas convertir a octal\n");
+		      	printf("> ");
+				//num=ingresadec();
+            	dec2oct();
             	break;
 			
 			case 3:
-            	printf("Estás en la opción 3\n");
+            	printf("Ingresa el nº decimal que deseas convertir a hexadecimal\n");
+            	printf("> ");
+            	//num=ingresadec();
+		    	dec2hex();
             	break;
 
             case 4:
-            	printf("Estás en la opción 4\n");
+            	printf("Ingresa el nº decimal que deseas convertir a base 6\n");
+				printf("> ");
+				//num=ingresadec();
+            	dec2b6();
             	break;
 
             default:
