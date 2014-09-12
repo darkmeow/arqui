@@ -12,7 +12,7 @@
 #include <math.h>
 
 void menu();
-long long cambio_base();
+char * cambio_base();
 void reverse();
 long long ingresadec();
 
@@ -40,19 +40,46 @@ void reverse(char s[])
 }
 
 //función cambio de base
-long long cambio_base(long long dec, int base){     
+char * cambio_base(long long dec, int base){     
     long long dec2;
     char resto[100];
     int i=0;
-    while(dec>0){ 
-        resto[i]=(dec%base)+48;
+    while(dec>0){
+        if(((dec%base))<10){ 
+            resto[i]=(dec%base)+48;
+            dec=dec/base;
+            i++;
+    }else{
+        if((dec%base)==10){
+            resto[i]='A';
+        } else if(((dec%base))==11){
+            resto[i]='B';
+
+        } else if(((dec%base))==12){
+            resto[i]='C';
+
+        } else if(((dec%base))==13){
+            resto[i]='D';
+
+        } else if(((dec%base))==14){
+            resto[i]='E';
+
+        } else if(((dec%base))==15){
+            resto[i]='F';
+
+        }
         dec=dec/base;
         i++;
     }
+    }
+    printf("%s antes del 0000000\n", resto);
+
     resto[i]='\0';
+    printf("%s antes del reverse\n", resto);
     reverse(resto);
-    dec2 = atoll(resto);
-    return dec2; 
+    printf("%s antes del reverse\n", resto);
+    
+    return resto; 
 
 }
 
@@ -87,28 +114,28 @@ void menu(){
                 printf("Ingresa el nº decimal que deseas convertir a binario\n");
             	printf("> ");
                 dec=ingresadec();
-            	printf("El nº %lld en binario es: %lld\n", dec, cambio_base(dec,2));  
+            	printf("El nº %lld en binario es: %s\n", dec, cambio_base(dec,2));  
             	break;
             
             case 2:
             	printf("Ingresa el nº decimal que deseas convertir a octal\n");
 		      	printf("> ");
                 dec=ingresadec();
-                printf("El nº %lld en octal es: %lld\n", dec, cambio_base(dec,8)); 
+                printf("El nº %lld en octal es: %s\n", dec, cambio_base(dec,8)); 
             	break;
 			
 			case 3:
             	printf("Ingresa el nº decimal que deseas convertir a hexadecimal\n");
             	printf("> ");
                 dec=ingresadec();
-            	printf("El nº %lld en octal es: %lld\n", dec, cambio_base(dec,16));
+            	printf("El nº %lld en hexadecimal es: %s\n", dec, cambio_base(dec,16));
             	break;
 
             case 4:
             	printf("Ingresa el nº decimal que deseas convertir a base 6\n");
 				printf("> ");
                 dec=ingresadec();
-                printf("El nº %lld en base 6 es: %lld\n", dec, cambio_base(dec,6));
+                printf("El nº %lld en base 6 es: %s\n", dec, cambio_base(dec,6));
             	break;
 
             default:
